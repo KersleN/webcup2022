@@ -1,0 +1,557 @@
+
+   
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/src/input.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+   
+    <title>Landing Page</title>
+
+    <style>
+      * {
+          box-sizing: border-box;
+      }
+      
+      #drop {
+          position: absolute;
+      }
+      
+      body {
+          background-color: #0c0c0c;
+        
+      }
+
+      #about{
+    background-color: rgb(219, 219, 219);
+   
+}
+
+#card3 {
+width: 40%;
+  height: 45%;
+    position: relative;
+    bottom:9pc;
+    left: 55pc;
+    background-color: rgb(204, 134, 134);
+    margin: 50px;
+  }
+
+
+#card2 {
+
+  
+    position: relative;
+    top: 11pc;
+    left: 26pc;
+    background-color: rgb(85, 195, 209);
+    margin: 60px;
+  }
+
+  #card1 {
+
+    position: relative;
+    top: 29pc;
+    background-color: rgb(221, 221, 70);
+    margin: 30px;
+  }
+
+      
+      #container {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+      }
+      
+      #slides {
+          position: relative;
+          width: 100%;
+          height: 70%;
+      }
+      
+      #slides .slide {
+          position: absolute;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          width: 100%;
+          height: 100%;
+      }
+      
+      #slides .slide .title {
+          position: absolute;
+          top: calc(50% - 0.5em);
+          left: 20px;
+          z-index: 2;
+          padding-top: 5px;
+          font-family: "Reem Kufi", sans-serif;
+          font-size: 5em;
+          color: white;
+          overflow: hidden;
+      }
+      
+      #slides .slide .title .title-text {
+          display: block;
+          -webkit-transform: translateY(1.2em);
+          transform: translateY(1.2em);
+          -webkit-transition: -webkit-transform 1s ease-in-out;
+          transition: -webkit-transform 1s ease-in-out;
+          transition: transform 1s ease-in-out;
+          transition: transform 1s ease-in-out, -webkit-transform 1s ease-in-out;
+      }
+      
+      #slides .slide .slide-partial {
+          position: absolute;
+          width: 50%;
+          height: 100%;
+          overflow: hidden;
+          -webkit-transition: -webkit-transform 1s ease-in-out;
+          transition: -webkit-transform 1s ease-in-out;
+          transition: transform 1s ease-in-out;
+          transition: transform 1s ease-in-out, -webkit-transform 1s ease-in-out;
+      }
+      
+      #slides .slide .slide-partial img {
+          position: absolute;
+          z-index: 1;
+          width: 100%;
+          height: 100%;
+          -o-object-fit: cover;
+          object-fit: cover;
+          -webkit-transition: -webkit-transform 1s ease-in-out;
+          transition: -webkit-transform 1s ease-in-out;
+          transition: transform 1s ease-in-out;
+          transition: transform 1s ease-in-out, -webkit-transform 1s ease-in-out;
+      }
+      
+      #slides .slide .slide-left {
+          top: 0;
+          left: 0;
+          -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+      }
+      
+      #slides .slide .slide-left img {
+          top: 0;
+          right: 0;
+          -o-object-position: 100% 50%;
+          object-position: 100% 50%;
+          -webkit-transform: translateX(50%);
+          transform: translateX(50%);
+      }
+      
+      #slides .slide .slide-right {
+          top: 0;
+          right: 0;
+          -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+          -webkit-transition-delay: 0.2s;
+          transition-delay: 0.2s;
+      }
+      
+      #slides .slide .slide-right img {
+          top: 0;
+          left: 0;
+          -o-object-position: 0% 50%;
+          object-position: 0% 50%;
+          -webkit-transition-delay: 0.2s;
+          transition-delay: 0.2s;
+          -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+      }
+      
+      #slides .slide.active .title .title-text {
+          -webkit-transform: translate(0);
+          transform: translate(0);
+          -webkit-transition-delay: 0.3s;
+          transition-delay: 0.3s;
+      }
+      
+      #slides .slide.active .slide-partial,
+      #slides .slide.active .slide-partial img {
+          -webkit-transform: translateX(0);
+          transform: translateX(0);
+      }
+      
+      #slide-select {
+          position: absolute;
+          bottom: 20px;
+          left: 20px;
+          z-index: 100;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          align-items: center;
+          -ms-flex-pack: distribute;
+          justify-content: space-around;
+          color: white;
+      }
+      
+      #slide-select li {
+          position: relative;
+          cursor: pointer;
+          margin: 0 5px;
+      }
+      
+      #slide-select .fa {
+          font-size: 1.25em;
+          line-height: 1.25em;
+      }
+      
+      #slide-select .fa.prev:hover {
+          -webkit-transform: translateX(-2px);
+          transform: translateX(-2px);
+      }
+      
+      #slide-select .fa.next:hover {
+          -webkit-transform: translateX(2px);
+          transform: translateX(2px);
+      }
+      
+      #slide-select .selector {
+          height: 14px;
+          width: 14px;
+          border: 2px solid white;
+          border-radius: 50%;
+          background-color: transparent;
+          -webkit-transition: background-color 0.5s ease-in-out;
+          transition: background-color 0.5s ease-in-out;
+      }
+      
+      #slide-select .selector.current {
+          background-color: white;
+      }
+      
+      .codepen-link {
+          position: absolute;
+          bottom: 20px;
+          right: 20px;
+          height: 40px;
+          width: 40px;
+          z-index: 10;
+          border-radius: 50%;
+          box-sizing: border-box;
+          background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/544318/logo.jpg");
+          background-position: center center;
+          background-size: cover;
+          opacity: 0.5;
+          -webkit-transition: all 0.25s;
+          transition: all 0.25s;
+      }
+      
+      .codepen-link:hover {
+          opacity: 0.8;
+          box-shadow: 0 2px 6px #0c0c0c;
+      }
+  </style>
+
+    <style>
+        body {
+            font-family: 'Oxygen', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="h-screen bg-gray-200 overflow-x-hidden">
+
+
+    <header>
+        <nav
+           class="
+             flex flex-wrap
+             items-center
+             justify-between
+             w-full
+             py-4
+             md:py-0
+             px-4
+             text-lg text-gray-700
+             bg-gray-900
+           "
+         >
+          <div>
+             <a href="#">
+             
+               <svg width="177" height="24.5" viewBox="0 0 177 24.5" xmlns="http://www.w3.org/2000/svg"><g id="svgGroup" stroke-linecap="round" fill-rule="evenodd" font-size="9pt" stroke="#31489c" stroke-width="0.25mm" fill="#c41b1be0" style="stroke:#31489c;stroke-width:0.25mm;fill:#c41b1be0"><path d="M 60.75 0 L 60.75 24.45 L 56.75 24.45 L 56.75 6.05 L 58.25 3.55 L 56 3.55 L 49.85 17.5 L 46.95 17.5 L 41 3.55 L 38.75 3.55 L 40.25 6.05 L 40.25 24.45 L 36.25 24.45 L 36.25 0 L 43.4 0 L 48.35 11.7 L 48.85 11.7 L 53.8 0 L 60.75 0 Z M 87.25 21 L 87.25 24.5 L 69.75 24.5 L 69.75 7 L 73.25 3.5 L 69.75 3.5 L 69.75 0 L 87.25 0 L 87.25 3.5 L 73.75 3.5 L 73.75 13.5 L 76.75 10.5 L 87.25 10.5 L 87.25 14 L 73.75 14 L 73.75 21 L 87.25 21 Z M 115.75 3.5 L 115.75 14 A 3.34 3.34 0 0 1 114.767 16.382 A 4.384 4.384 0 0 1 114.7 16.45 A 3.659 3.659 0 0 1 113.62 17.212 A 3.288 3.288 0 0 1 112.25 17.5 L 98.75 17.5 L 98.75 24.5 L 94.75 24.5 L 94.75 7 L 98.25 3.5 L 94.75 3.5 L 94.75 0 L 112.25 0 A 3.34 3.34 0 0 1 114.632 0.983 A 4.384 4.384 0 0 1 114.7 1.05 A 3.659 3.659 0 0 1 115.462 2.13 A 3.288 3.288 0 0 1 115.75 3.5 Z M 154.5 17.5 L 154.5 24.5 L 137 24.5 L 137 0 L 141 0 L 141 21 L 150.5 21 L 150.5 17.5 L 154.5 17.5 Z M 177 17.5 L 177 24.5 L 159.5 24.5 L 159.5 0 L 163.5 0 L 163.5 21 L 173 21 L 173 17.5 L 177 17.5 Z M 18.5 0 L 18.5 3.5 L 11.25 3.5 L 11.25 24.5 L 7.25 24.5 L 7.25 3.5 L 0 3.5 L 0 0 L 18.5 0 Z M 27.25 0 L 27.25 24.5 L 23.25 24.5 L 23.25 0 L 27.25 0 Z M 128 0 L 128 24.5 L 124 24.5 L 124 0 L 128 0 Z M 101.75 14 L 111.75 14 L 111.75 3.5 L 98.75 3.5 L 98.75 17 L 101.75 14 Z" vector-effect="non-scaling-stroke"/></g></svg>
+               
+             </a>
+           </div>
+          
+            <svg
+               xmlns="http://www.w3.org/2000/svg"
+               id="menu-button"
+               class="h-6 w-6 cursor-pointer md:hidden block"
+               fill="none"
+               viewBox="0 0 24 24"
+               stroke="currentColor"
+             >
+               <path
+                 stroke-linecap="round"
+                 stroke-linejoin="round"
+                 stroke-width="2"
+                 d="M4 6h16M4 12h16M4 18h16"
+               />
+             </svg>
+          
+          <div class="hidden w-full md:flex md:items-center md:w-auto" id="menu">
+             <ul
+               class="
+                 pt-4
+                 text-base text-gray-700
+                 md:flex
+                 md:justify-between 
+                 md:pt-0"
+             >
+               
+               <li>
+                 <a class="md:p-4 py-2 block text-white hover:text-purple-400" href="#Capsules"
+                   >Capsules</a
+                 >
+               </li>
+               <li>
+                 <a class="md:p-4 py-2 block text-white hover:text-purple-400" href="#about"
+                   >About</a
+                 >
+               </li>
+               <li>
+                 <a
+                   class="md:p-4 py-2 block hover:text-blue-500 text-purple-500"
+                   href="#"
+                   >Sign in</a
+                 >
+               </li>
+               <li>
+                 <a
+                   class="md:p-4 py-2 block hover:text-blue-500 text-purple-500"
+                   href="#"
+                   >Sign Up</a
+                 >
+               </li>
+             </ul>
+           </div>
+           <script>
+             const button = document.querySelector('#menu-button');
+       const menu = document.querySelector('#menu');
+       
+       
+       button.addEventListener('click', () => {
+         menu.classList.toggle('hidden');
+       });
+       
+           </script>
+       </nav>
+     </header>
+
+     <div id="container" class="z-0">
+      <ul id="slides">
+          <li class="slide">
+              <div class="slide-partial slide-left"><img src="images/space1.jpeg" /></div>
+              <div class="slide-partial slide-right"><img src="images/space2.jpeg" /></div>
+              <h1 class="title"><span class="title-text">Space</span></h1>
+          </li>
+          <li class="slide">
+              <div class="slide-partial slide-left"><img src="images/cave1.jpeg" /></div>
+              <div class="slide-partial slide-right"><img src="images/cave2.jpeg" /></div>
+              <h1 class="title"><span class="title-text">Underground</span></h1>
+          </li>
+          <li class="slide">
+              <div class="slide-partial slide-left"><img src="images/moon1.jpeg" /></div>
+              <div class="slide-partial slide-right"><img src="images/moon2.jpeg" /></div>
+              <h1 class="title"><span class="title-text">Moon</span></h1>
+          </li>
+      </ul>
+      
+  </div>
+  <link href="https://fonts.googleapis.com/css?family=Reem+Kufi" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+  <div id="bcl">
+      <a style="font-size:8pt;text-decoration:none;" href=""></a>
+  </div>
+  <script>
+      /* jshint esversion: 6 */
+
+      ((window, document, $, undefined) => {
+
+          let $slides, interval,
+              $selectors, $btns,
+              currentIndex, nextIndex;
+
+          let cycle = (index) => {
+              let $currentSlide, $nextSlide,
+                  $currentSelector, $nextSelector;
+
+              nextIndex = index !== undefined ? index : nextIndex;
+
+              $currentSlide = $($slides.get(currentIndex));
+              $currentSelector = $($selectors.get(currentIndex));
+
+              $nextSlide = $($slides.get(nextIndex));
+              $nextSelector = $($selectors.get(nextIndex));
+
+              $currentSlide
+                  .removeClass('active')
+                  .css('z-index', '0');
+
+              $nextSlide
+                  .addClass('active')
+                  .css('z-index', '1');
+
+              $currentSelector.removeClass('current');
+              $nextSelector.addClass('current');
+
+              currentIndex = index !== undefined ? nextIndex : currentIndex < $slides.length - 1 ? currentIndex + 1 : 0;
+              nextIndex = currentIndex + 1 < $slides.length ? currentIndex + 1 : 0;
+          };
+
+          $(() => {
+              currentIndex = 0;
+              nextIndex = 1;
+
+              $slides = $('.slide');
+              $selectors = $('.selector');
+              $btns = $('.btn');
+
+              $slides.first().addClass('active');
+              $selectors.first().addClass('current');
+
+              interval = window.setInterval(cycle, 6000);
+
+              $selectors.on('click', (e) => {
+                  let target = $selectors.index(e.target);
+                  if (target !== currentIndex) {
+                      window.clearInterval(interval);
+                      cycle(target);
+                      interval = window.setInterval(cycle, 6000);
+                  }
+              });
+
+              $btns.on('click', (e) => {
+                  window.clearInterval(interval);
+                  if ($(e.target).hasClass('prev')) {
+                      let target = currentIndex > 0 ? currentIndex - 1 : $slides.length - 1;
+                      cycle(target);
+                  } else if ($(e.target).hasClass('next')) {
+                      cycle();
+                  }
+                  interval = window.setInterval(cycle, 6000);
+              });
+          });
+
+      })(this, document, jQuery);
+  </script>
+  </div>  
+  
+  <div id="about">
+
+    <div id="card1" class=" max-w-sm rounded overflow-hidden shadow-lg absolute">
+      <div class="px-6 py-4">
+        <div class="font-bold text-xl mb-2 text-center">What we do</div>
+        <p class="text-black text-base font-bold">
+          Our time capsule helps you to store a memory or something special that you want to be hidden away in our
+  three proposed destinations for the future. User has to choose locations that are offered and with this there are various price tag associated to them as some are most scolder and has to pay 
+  via bitcoin transaction using QR code system.
+        </p>
+      </div>
+    </div>
+  
+    <div id="card2" class="max-w-sm rounded overflow-hidden shadow-lg absolute">
+      <div class="px-6 py-4">
+        <div class="font-bold text-xl mb-2 text-center">How to use it</div>
+        <p class="text-black text-base font-bold">
+          You have the choice between three of our proposed destinations for your capsule ,Underground of Earth ,
+  Orbiting the moon or even making it travel accross the universe.You can input any information of your choice that
+  you want to be preserve for the future, for example your favorite photo , a video of an event you like or even your DNA.
+        </p>
+      </div>
+    </div>
+    
+    <div id="card3" class="max-w-sm rounded overflow-hidden shadow-lg absolute">
+      <div class="px-6 py-4">
+        <div class="font-bold text-xl mb-2 text-center">How it works</div>
+        <p class="text-black text-base font-bold">
+          After selection your desired capsule destination , you will be redirected to the package selection page where you
+  have a wide variety of packages for the types of data you want to preserve. The capsule time can be set to return
+  back according to your prefered choice.
+        </p>
+      </div>
+  
+    </div>
+  
+  </div>
+
+  
+<div id="Capsules" class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-3 gap-5">
+    
+  <!--Card 1-->
+    <div class=" w-full lg:max-w-full lg:flex">
+      <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('images/land.jpg')" title="Mountain">
+      </div>
+      <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+        <div class="mb-8">
+          
+          <div class="text-gray-900 font-bold text-xl mb-2">Underground Earth</div>
+          <p class="text-gray-700 text-base">Your capsule will be hidden underground at your prefered location on earth.Our packages depends on the location (underwater , reserve place , etc..) and the time-stamp duration.</p>
+          <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mt-8">
+            Buy Now
+          </button>
+        </div>
+        
+      </div>
+    </div>
+    <!--Card 2-->
+    <div class="w-full lg:max-w-full lg:flex">
+      <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('images/mooon.jpeg')" title="River">
+      </div>
+      <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal ">
+        <div class="mb-8">
+         
+          <div class="text-gray-900 font-bold text-xl mb-2">Around The Moon</div>
+          <p class="text-gray-700 text-base mt-20">Your capsule will be sent to orbit around the moon with your given data.</p>
+          <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mt-11">
+            Buy Now
+          </button>
+        </div>
+        
+      </div>
+    </div>
+    <!--Card 3-->
+    <div class="w-full lg:max-w-full lg:flex">
+      
+      <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('images/universe.jpeg')" title="Forest">
+      </div>
+      <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+        <div class="mb-8">
+         
+          <div class="text-gray-900 font-bold text-xl mb-2">Across The Universe</div>
+          <p class="text-gray-700 text-base mt-11">Set your capsule on an adventure across the universe where the posibility of reaching another life form.</p>
+          <button class=" bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mt-11">
+            Buy Now
+          </button>
+          
+        
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+     
+
+</body>
+
+</html>
